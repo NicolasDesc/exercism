@@ -3,10 +3,14 @@
 // convenience to get you started writing code faster.
 //
 
-export const encode = () => {
-  throw new Error("Remove this statement and implement this function");
+export const encode = (data) => {
+  return data.replace(/(.)\1+/g, NumReplacer);
 };
 
-export const decode = () => {
-  throw new Error("Remove this statement and implement this function");
+const NumReplacer = (match, char) => match.length + char;
+
+export const decode = (data) => {
+  return data.replace(/(\d+)(.)/g, CharReplacer);
 };
+
+const CharReplacer = (match, num, char) => char.repeat(num);
